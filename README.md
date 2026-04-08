@@ -1,23 +1,43 @@
 # Executive Sales & Forecast Dashboard
 
-Proyecto end-to-end para portfolio orientado a analitica comercial. Incluye:
+Portfolio project that combines Python, SQL, forecasting, and BI-ready outputs to simulate an executive sales analytics workflow.
 
-- Generacion de ventas sinteticas con granularidad diaria.
-- Modelo en estrella en SQLite para analitica SQL.
-- Pipeline en Python con `pandas`.
-- Forecast de ventas con `scikit-learn`.
-- Exportables listos para consumir desde Power BI.
+## What This Project Demonstrates
 
-## Stack
+- Building a synthetic but realistic sales dataset with daily granularity.
+- Modeling a small analytical warehouse in SQLite using fact and dimension tables.
+- Creating KPI and reporting exports for Power BI.
+- Training a forecasting model with `scikit-learn` and exporting a 90-day revenue forecast.
+
+## Business Scenario
+
+The use case represents a sales leadership dashboard designed to answer:
+
+- How much revenue, profit, and volume are we generating?
+- Which regions, channels, and product categories perform best?
+- How are sales evolving over time?
+- What revenue should we expect over the next 90 days?
+
+## Tech Stack
 
 - Python
+- Pandas
 - SQL
 - SQLite
-- Pandas
 - Scikit-Learn
 - Power BI
 
-## Estructura
+## Pipeline Outputs
+
+Current generated results:
+
+- 10,205 synthetic orders
+- 46,155 units sold
+- 207.8M total revenue
+- 87.6M total profit
+- 90-day forecast exported for BI consumption
+
+## Repository Structure
 
 ```text
 executive-sales-forecast-dashboard/
@@ -32,21 +52,16 @@ executive-sales-forecast-dashboard/
 `-- README.md
 ```
 
-## Objetivo del caso
+## Key Files
 
-Construir un dashboard ejecutivo con visibilidad casi en tiempo real sobre:
+- [scripts/run_pipeline.py](./scripts/run_pipeline.py): runs the full pipeline end to end.
+- [scripts/generate_sample_data.py](./scripts/generate_sample_data.py): builds the synthetic sales dataset.
+- [scripts/build_warehouse.py](./scripts/build_warehouse.py): creates the warehouse and exports reporting views.
+- [scripts/train_forecast.py](./scripts/train_forecast.py): trains the forecast model and generates predictions.
+- [sql/schema.sql](./sql/schema.sql): warehouse schema.
+- [sql/analytics_views.sql](./sql/analytics_views.sql): analytical SQL views.
 
-- Revenue total y unidades vendidas.
-- Evolucion mensual de ventas y margen.
-- Rendimiento por region, canal y categoria.
-- Top productos y clientes.
-- Forecast de revenue para los proximos 90 dias.
-
-## Como ejecutarlo
-
-1. Crear entorno virtual.
-2. Instalar dependencias.
-3. Ejecutar el pipeline.
+## How to Run
 
 ```bash
 python -m venv .venv
@@ -55,58 +70,15 @@ pip install -r requirements.txt
 python scripts/run_pipeline.py
 ```
 
-## Salidas generadas
+## BI Deliverables
 
-- `data/raw/sales.csv`: dataset base.
-- `data/processed/sales_warehouse.db`: data warehouse SQLite.
-- `exports/dashboard_sales.csv`: tabla denormalizada para Power BI.
-- `exports/kpi_summary.csv`: resumen ejecutivo.
-- `exports/monthly_sales.csv`: serie historica agregada.
-- `exports/sales_forecast.csv`: forecast para los proximos 90 dias.
-- `models/sales_forecast_model.joblib`: modelo entrenado.
-
-## Resultado del pipeline
-
-Tras ejecutar el pipeline actual se generan:
-
-- 10,205 pedidos sinteticos.
-- 46,155 unidades vendidas.
-- 207.8M de revenue acumulado.
-- 87.6M de profit acumulado.
-- 90 dias de forecast exportados para visualizacion.
-
-## Uso en Power BI
-
-Importa estos CSV desde la carpeta `exports/`:
+The `exports/` folder contains files ready to import into Power BI:
 
 - `dashboard_sales.csv`
 - `kpi_summary.csv`
 - `monthly_sales.csv`
 - `sales_forecast.csv`
 
-Visuales sugeridos:
+## Why It Matters
 
-- KPI cards para revenue, profit, units y average order value.
-- Line chart para revenue mensual.
-- Clustered bar chart por region y categoria.
-- Map por region.
-- Forecast chart comparando historico y prediccion.
-
-## Entidades del modelo
-
-- `dim_date`
-- `dim_region`
-- `dim_channel`
-- `dim_product`
-- `fact_sales`
-
-## Consultas SQL
-
-El esquema y las vistas analiticas estan en:
-
-- `sql/schema.sql`
-- `sql/analytics_views.sql`
-
-## Nota
-
-Los datos son sinteticos, pero la estructura esta pensada para parecerse a un flujo real de analitica comercial conectado a un warehouse.
+This project shows a practical mix of analytics engineering and business reporting: data preparation, warehouse modeling, forecasting, and BI handoff in one reproducible workflow.
