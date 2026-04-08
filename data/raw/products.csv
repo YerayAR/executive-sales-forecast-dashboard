@@ -1,0 +1,11 @@
+category,subcategory,product_name,unit_price,unit_cost
+Software,BI,Power BI Pro,1200,720
+Software,BI,Power BI Premium,3200,1950
+Services,Consulting,Analytics Advisory,4800,2600
+Services,Consulting,Forecast Optimization,5400,3000
+Data,Warehouse,SQL Warehouse Starter,2600,1550
+Data,Warehouse,SQL Warehouse Enterprise,6200,3600
+Automation,RPA,RPA Bot License,4100,2500
+Automation,RPA,Intelligent Document Processing,5800,3550
+Platform,Cloud,Data Platform Subscription,6900,4300
+Platform,Cloud,ML Forecast Add-on,3600,2200
